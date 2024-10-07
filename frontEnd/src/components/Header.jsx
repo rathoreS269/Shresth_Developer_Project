@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 function Header() {
     const { currentUser } = useSelector((state) => state.user);
-    console.log('current user is', currentUser);
-    if (currentUser) {
-      console.log('name is', currentUser.email);
-      console.log('avatar url is', currentUser.avatar);
-    }
+    // console.log('current user is', currentUser);
+    // if (currentUser) {
+    //   console.log('name is', currentUser.email);
+    //   console.log('avatar url is', currentUser.avatar);
+    // }
   return (
     <header className='bg-slate-200 shadow-md'>
         <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
