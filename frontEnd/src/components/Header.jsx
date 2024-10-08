@@ -7,7 +7,7 @@ function Header() {
     // console.log('current user is', currentUser);
     // if (currentUser) {
     //   console.log('name is', currentUser.email);
-      console.log('avatar url is', currentUser.avatar);
+     //console.log('avatar url is', currentUser.avatar);
     // }
   return (
     <header className='bg-slate-200 shadow-md'>
@@ -32,13 +32,12 @@ function Header() {
        <li className=' hidden sm:inline text-slate-700 hover:underline'>About</li>
        </Link>
        <Link to='/profile'>
-       {currentUser ? (
-              <img  key={currentUser.avatar} className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
+            {currentUser ? (
+              <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } alt='profile' />
             ) : (
               <li className=' text-slate-700 hover:underline'> Sign in</li>
             )}
-       
-       </Link>
+          </Link>
       </ul>
         </div>
     

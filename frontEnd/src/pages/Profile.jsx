@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux'
 import { useRef, useState,useEffect } from 'react'
 import {getStorage, uploadBytesResumable,ref,getDownloadURL} from 'firebase/storage';
 import {app} from '../firebase'
-import { updateUserStart,updateUserSuccess, updateUserFailure } from '../redux/user/userSlice';
+import { updateUserStart,updateUserSuccess, updateUserFailure,
+     deleteUserStart, deleteUserSuccess,  deleteUserFailure
+ } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 function Profile() {
   const fileRef = useRef(null);
@@ -15,9 +17,9 @@ function Profile() {
   const[formData, setFormData] = useState({})
   const[updateSuccess,setUpdateSuccess] = useState(false);
 
-  console.log(formData);
-  // console.log(file)
-  // console.log('avatar url is ',currentUser.avatar)
+ // console.log(formData);
+  //console.log(file)
+  //console.log('avatar url is ',currentUser.avatar)
   useEffect(()=>{
     if(file){
       handleFileUpload(file);
@@ -77,7 +79,24 @@ function Profile() {
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
-  }
+  };
+
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
   return (
     <div className='p-4 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center
@@ -125,11 +144,11 @@ function Profile() {
           </button>
       </form>
       <div className='flex justify-between mt-5'>
-        <span className='text-red-700 cursor-pointer'>Delete Account</span>
+        <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Delete Account</span>
         <span className='text-red-700 cursor-pointer'>Sign out</span>
       </div>
 
-      <p className='text-red-700'>{error ? error : ''}</p>
+      {/* <p className='text-red-700'>{error ? error : ''}</p> */}
       <p  className='text-green-700'>{updateSuccess ?'User is updated successfully' : ''}</p>
     </div>
   )
