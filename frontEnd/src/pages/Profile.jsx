@@ -13,6 +13,8 @@ function Profile() {
   const[filePerc, setFilePerc] = useState(0);
   const[fileUploadError, setFileUploadError]= useState(false);
   const[formData, setFormData] = useState({})
+  const[updateSuccess,setUpdateSuccess] = useState(false);
+
   console.log(formData);
   // console.log(file)
   // console.log('avatar url is ',currentUser.avatar)
@@ -71,6 +73,7 @@ function Profile() {
       }
 
       dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
@@ -127,6 +130,7 @@ function Profile() {
       </div>
 
       <p className='text-red-700'>{error ? error : ''}</p>
+      <p  className='text-green-700'>{updateSuccess ?'User is updated successfully' : ''}</p>
     </div>
   )
 }
