@@ -7,7 +7,7 @@ function Header() {
     // console.log('current user is', currentUser);
     // if (currentUser) {
     //   console.log('name is', currentUser.email);
-    //   console.log('avatar url is', currentUser.avatar);
+      console.log('avatar url is', currentUser.avatar);
     // }
   return (
     <header className='bg-slate-200 shadow-md'>
@@ -33,7 +33,7 @@ function Header() {
        </Link>
        <Link to='/profile'>
        {currentUser ? (
-              <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
+              <img  key={currentUser.avatar} className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
             ) : (
               <li className=' text-slate-700 hover:underline'> Sign in</li>
             )}
