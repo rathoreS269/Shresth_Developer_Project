@@ -163,7 +163,7 @@ function Profile() {
           </button>
           <Link to="/create-listing" 
           className='bg-green-700 text-white p-2 rounded-lg uppercase text-center hover:opacity-95'>
-             Create Listing
+             Upload an Estate
           </Link>
       </form>
       <div className='flex justify-between mt-5'>
