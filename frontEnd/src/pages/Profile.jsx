@@ -11,7 +11,9 @@ import { updateUserStart,updateUserSuccess, updateUserFailure,
  } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function Profile() {
+  const navigate = useNavigate()
   const fileRef = useRef(null);
   const dispatch = useDispatch();
   const {currentUser,loading, error} = useSelector((state) => state.user)
@@ -20,6 +22,9 @@ function Profile() {
   const[fileUploadError, setFileUploadError]= useState(false);
   const[formData, setFormData] = useState({})
   const[updateSuccess,setUpdateSuccess] = useState(false);
+  const [adminError, setAdminError] = useState('');
+   
+  const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
 
  // console.log(formData);
   //console.log(file)
@@ -116,6 +121,13 @@ function Profile() {
       dispatch(deleteUserFailure(data.message));
     }
   };
+  const handleAdminRedirect = () => {
+    if (currentUser && currentUser.email === adminEmail) {
+      navigate('/create-listing'); 
+    } else {
+      setAdminError('Only admin has the permission to  access this page.'); 
+    }
+  };
   return (
     <div className='p-4 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center
@@ -161,10 +173,18 @@ function Profile() {
         p-2 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Update'}
           </button>
-          <Link to="/create-listing" 
+          {/* <Link to="/create-listing" 
           className='bg-green-700 text-white p-2 rounded-lg uppercase text-center hover:opacity-95'>
              Upload an Estate
-          </Link>
+          </Link> */}
+
+        <button
+        type="button"
+        onClick={handleAdminRedirect}
+        className='bg-green-700 text-white p-2 rounded-lg uppercase text-center hover:opacity-95'>
+         Upload an Estate
+        </button>
+        {adminError && <p className='text-red-700'>{adminError}</p>}
       </form>
       <div className='flex justify-between mt-5'>
         <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Delete Account</span>
