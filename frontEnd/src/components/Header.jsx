@@ -11,20 +11,21 @@ function Header() {
   //   console.log('name is', currentUser.email);
   //console.log('avatar url is', currentUser.avatar);
   // }
-  const handleSubmit = (e) =>{
-     e.preventDefault();
-     const urlParams = new URLSearchParams(window.location.search);
-     urlParams.set('searchTerm', searchTerm );
-     const searchQuery = urlParams.toString();
-     navigate(`/search${searchQuery}`)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('searchTerm', searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
   };
-  useEffect(() =>{
-     const urlParams = new URLSearchParams(location.search);
-     const searchTermFromUrl = urlParams.get('searchTerm');
-     if(searchTermFromUrl){
-      setSearchTerm(searchTermFromUrl)
-     }
-  },[location.search]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
   return (
     <header className="bg-slate-200 shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
