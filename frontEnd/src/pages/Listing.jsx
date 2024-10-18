@@ -68,7 +68,7 @@ function Listing() {
                        <div
                   className="relative w-full"
                   style={{
-                    paddingTop: '56.25%', // This creates a responsive 16:9 aspect ratio (can be adjusted)
+                    paddingTop: '56.25%',
                     background: `url(${url}) center no-repeat`,
                     backgroundSize: 'cover',
                     imageRendering: 'auto',
@@ -97,7 +97,7 @@ function Listing() {
               </p>
               {listing.offer && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                 ₹ {+listing.regularPrice - +listing.discountPrice}
+                 ₹ {+listing.regularPrice - +listing.discountPrice} OFF
                 </p>
               )}
             </div>
