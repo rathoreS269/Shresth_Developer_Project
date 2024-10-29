@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { FaMapMarkerAlt } from "react-icons/fa";
 const About = () => {
   return (
     <div className="bg-gray-100 p-8">
@@ -23,6 +23,19 @@ const About = () => {
           <p>
             At <strong>Shresth Developer</strong>, we believe that finding the perfect home should be a memorable and rewarding experience. With years of experience in the industry, our dedicated team is committed to guiding you through every step of the real estate process, ensuring that you find not just a house, but a home.
           </p>
+          <p className="flex items-center mt-6 gap-2 text-slate-600  text-sm">
+            <FaMapMarkerAlt className='text-green-700' />
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  'saraidhela dhanbad'
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                saraidhela dhanbad
+              </a>
+            </p>
         </div>
       </div>
 
