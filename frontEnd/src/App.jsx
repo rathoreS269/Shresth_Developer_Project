@@ -12,10 +12,12 @@ import Listing from "./pages/Listing"
 import Search from "./pages/Search"
 import ForgetPassword from "./pages/ForgetPassword"
 import ResetPassword from "./pages/ResetPassword"
+import Footer from "./components/Footer"
 function App() {
 
   return <BrowserRouter>
   <Header/>
+  
   <Routes>
    <Route path="/" element={<Home/>} />
    <Route path="/sign-in" element={<SignIn/>} />
@@ -32,9 +34,9 @@ function App() {
    <Route path="/update-listing/:listingId" element={<UpdateListing/>} />
    </Route>
   </Routes>
-  
+  <Footer/>
   </BrowserRouter>
-  
+ 
 }
 
 export default App
