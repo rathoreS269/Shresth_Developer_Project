@@ -2,6 +2,10 @@ import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer';
+import { validationResult } from 'express-validator';
+
+
 export const signup = async(req, res) =>{
     const {username , email, password} = req.body
     const hashedPassword = bcryptjs.hashSync(password, 10)
@@ -71,3 +75,59 @@ export const signup = async(req, res) =>{
           next(error);
         }
       };
+
+    // Forgot Password
+    export const forgotPassword = async (req, res, next) => {
+    const { email } = req.body;
+    //console.log(email);
+    try{
+        const user = await User.findOne({ email });
+        if (!user) return next(errorHandler(404, 'User not found!'));
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: process.env.EMAIL_USER,
+              pass: process.env.EMAIL_PASS,
+            },
+             });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "120s" });
+        //console.log('token',token)
+        const resetLink = `${process.env.CLIENT_URL}/reset-password/${token}`;
+        //console.log(resetLink)
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Password Reset Request',
+            text: `You requested a password reset valid only for 2 minutes. Click the link to reset your password: ${resetLink}`,
+            html: `<p>Click <a href="${resetLink}">here</a> to reset your password. This link will expire in 2 minutes.</p>`,
+          };
+          await transporter.sendMail(mailOptions);
+          res.status(200).json('Password reset email sent!');
+      
+    }catch (error) { 
+        next(error);
+      } 
+   
+  };
+  // reset password
+  
+  export const resetPassword = async (req, res, next) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+  
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  
+      const user = await User.findById(decoded.id);
+      if (!user) return next(errorHandler(404, 'User not found!'));
+  
+      const hashedPassword = bcryptjs.hashSync(newPassword, 10);
+      user.password = hashedPassword;
+  
+      await user.save();
+      res.status(200).json('Password has been updated!');
+    } catch (error) {
+      next(error);
+    }
+  };
+  
