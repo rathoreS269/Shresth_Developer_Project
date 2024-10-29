@@ -1,48 +1,52 @@
-import React from 'react'
+import React from 'react';
 
-function About() {
-    return (
-      <div className="min-h-screen bg-gray-100 p-8">
-        <div className="max-w-4xl mx-auto bg-gray-200 rounded-lg shadow-lg shadow-slate-500 p-6"
-        >
-          <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">About Us</h1>
-  
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Your Trusted Real Estate Partner</h2>
-            <p className="text-gray-600 leading-relaxed">
-              At <strong>Shresth Developer</strong>, we believe that finding the perfect home should be a memorable and rewarding experience. With years of experience in the industry, our dedicated team is committed to guiding you through every step of the real estate process, ensuring that you find not just a house, but a home.
-            </p>
-          </section>
-  
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Our Mission</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Our mission is to simplify the buying and selling experience by providing unparalleled customer service and expert advice. We leverage the latest technology and market insights to help you make informed decisions in today’s dynamic real estate market.
-            </p>
-          </section>
-  
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Our Values</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
-              <li><strong>Integrity:</strong> We prioritize honesty and transparency in all our dealings.</li>
-              <li><strong>Excellence:</strong> We strive for excellence in every transaction.</li>
-              <li><strong>Client-Centric:</strong> Our clients’ needs are our top priority.</li>
-              <li><strong>Community Focused:</strong> We are dedicated to giving back to the communities we serve.</li>
-            </ul>
-          </section>
-  
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Why Choose Us?</h2>
-            <p className="text-gray-600 leading-relaxed">
-              With a proven track record of success and a passion for real estate, our team brings a wealth of knowledge and expertise to the table. Whether you are buying, selling, or investing, we are here to help you navigate the complexities of the real estate market and achieve your goals. 
-            </p>
-            <p className="mt-4 text-gray-600">
-              Let us help you find your dream home or sell your property for the best possible price. Contact us today!
-            </p>
-          </section>
+const About = () => {
+  return (
+    <div className="bg-gray-100 p-8">
+      {/* Image Container */}
+      <div className="max-w-6xl h-[500px] mx-auto bg-white rounded-lg shadow-lg p-6 relative">
+        <img 
+          src="https://www.sobharealty.com/media/fxrfl5pr/banner-13.jpg?width=1920&height=944&v=1db2933b297df10" 
+          alt="Background" 
+          className="absolute inset-0 w-full h-full object-cover opacity-85 rounded-lg"
+        />
+        
+        {/* Text over the image */}
+        <h1 className="text-4xl font-bold text-center text-gray-800 relative z-10">Choose the Best</h1>
+        <p className="text-gray-800 mt-2 text-lg mb-4 relative z-10 mx-auto text-center">
+          Welcome to shresth developer! We are dedicated to helping you find your dream home.
+        </p>
+      </div>
+      <div className="max-w-6xl mx-auto mt-2 bg-gray-500 bg-opacity-10 rounded-lg p-6 shadow-md shadow-gray-500">
+        <div className="text-black text-center">
+          <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
+          <p>
+            At <strong>Shresth Developer</strong>, we believe that finding the perfect home should be a memorable and rewarding experience. With years of experience in the industry, our dedicated team is committed to guiding you through every step of the real estate process, ensuring that you find not just a house, but a home.
+          </p>
         </div>
       </div>
-  )
-}
 
-export default About
+  
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-gray-200 p-5 rounded-lg shadow-lg shadow-gray-700">
+          <h3 className="text-xl font-semibold">Expert Knowledge</h3>
+          <p className="text-black">Our team has extensive knowledge of the local market.</p>
+        </div>
+        <div className="bg-gray-200 p-4 rounded-lg shadow-lg  shadow-gray-700 ">
+          <h3 className="text-xl font-semibold">Personalized Service</h3>
+          <p className="text-black">We tailor our services to meet your unique needs.</p>
+        </div>
+        <div className="bg-gray-200 p-4 rounded-lg shadow-lg  shadow-gray-700">
+          <h3 className="text-xl font-semibold">Integrity & Transparency</h3>
+          <p className="text-black">We believe in honest and open communication.</p>
+        </div>
+        <div className="bg-gray-200 p-4 rounded-lg shadow-lg  shadow-gray-700">
+          <h3 className="text-xl font-semibold">Client Satisfaction</h3>
+          <p className="text-black">Your satisfaction is our top priority.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default About;
