@@ -17,7 +17,7 @@ export const signup = async(req, res) =>{
         res.status(500).json(error.message)
     }
       
-    }
+    };
 
     export const signin = async (req, res, next) => {
         const { email, password } = req.body;
@@ -98,8 +98,8 @@ export const signup = async(req, res) =>{
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'Password Reset Request',
-            text: `You requested a password reset valid only for 2 minutes. Click the link to reset your password: ${resetLink}`,
-            html: `<p>Click <a href="${resetLink}">here</a> to reset your password. This link will expire in 2 minutes.</p>`,
+            text: `You requested a password . Click the link to reset your password: ${resetLink}`,
+            html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
           };
           await transporter.sendMail(mailOptions);
           res.status(200).json('Password reset email sent!');

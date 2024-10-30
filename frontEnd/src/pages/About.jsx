@@ -17,7 +17,7 @@ const About = () => {
           Welcome to shresth developer! We are dedicated to helping you find your dream home.
         </p>
       </div>
-      <div className="max-w-6xl mx-auto mt-2 bg-gray-500 bg-opacity-10 rounded-lg p-6 shadow-md shadow-gray-500">
+      <div className="max-w-6xl mx-auto mt-2 bg-slate-200 bg-opacity-10 rounded-lg p-6 shadow-md shadow-gray-600 border-emerald-100">
         <div className="text-black text-center">
           <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
           <p>

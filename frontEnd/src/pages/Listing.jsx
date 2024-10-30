@@ -63,12 +63,13 @@ function Listing() {
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
-                  className="relative w-full"
+                  className="relative w-full "
                   style={{
                     paddingTop: "56.25%",
                     background: `url(${url}) center no-repeat`,
-                    backgroundSize: "cover",
+                    backgroundSize: "contain",
                     imageRendering: "auto",
+                    width:'100%'
                   }}
                 ></div>
               </SwiperSlide>
