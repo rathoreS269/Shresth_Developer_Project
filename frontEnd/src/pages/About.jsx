@@ -2,7 +2,7 @@ import React from 'react';
 import { FaMapMarkerAlt } from "react-icons/fa";
 const About = () => {
   return (
-    <div className="bg-gray-100 p-8">
+    <div className="bg-gray-200 p-8">
       {/* Image Container */}
       <div className="max-w-6xl h-[500px] mx-auto bg-white rounded-lg shadow-lg p-6 relative">
         <img 
@@ -21,7 +21,7 @@ const About = () => {
         <div className="text-black text-center">
           <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
           <p>
-            At <strong>Shresth Developer</strong>, we believe that finding the perfect home should be a memorable and rewarding experience. With years of experience in the industry, our dedicated team is committed to guiding you through every step of the real estate process, ensuring that you find not just a house, but a home.
+            At <strong>Shresth Developer</strong>,the mission is to exceed our clients’ expectations by offering top-tier services. The company is driven by a passion for excellence and a commitment to delivering projects that stand the test of time. our focus is on providing solutions, maintaining the highest standards of quality, and ensuring complete customer satisfaction. By leveraging our extensive experience, we aim to create spaces that are functional, aesthetically pleasing, and sustainable.
           </p>
           <p className="flex items-center mt-6 gap-2 text-slate-600  text-sm">
             <FaMapMarkerAlt className='text-green-700' />
