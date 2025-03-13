@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon Backend/index.js",
     "start": "node Backend/index.js",
-    "build": "npm install && npm install --prefix frontEnd && npm run build --prefix frontEnd"
+    "build": "cd frontEnd && npm install && npm run build"
+
   },
   "keywords": [],
   "author": "",
