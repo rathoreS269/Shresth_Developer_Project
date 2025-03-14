@@ -6,7 +6,7 @@ const About = () => {
       {/* Image Container */}
       <div className="max-w-6xl h-[500px] mx-auto bg-white rounded-lg shadow-lg p-6 relative">
         <img 
-          src="https://www.sobharealty.com/media/fxrfl5pr/banner-13.jpg?width=1920&height=944&v=1db2933b297df10" 
+          src="https://img.pikbest.com/backgrounds/20220119/real-estate-technology-blue-modern-background_6240133.jpg!bw700" 
           alt="Background" 
           className="absolute inset-0 w-full h-full object-cover opacity-85 rounded-lg"
         />
